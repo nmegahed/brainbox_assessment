@@ -68,7 +68,7 @@ module "blue_instances" {
     {
       name             = "${terraform.workspace}-orange-web-1"
       ami_id           = data.aws_ami.ubuntu_2404.id
-      instance_type    = t3.micro
+      instance_type    = "t3.micro"
       subnet_id        = data.aws_subnet.private-us-east-1f.id
       vpc_id           = data.aws_vpc.private.id
       key_name         = "${terraform.space}-key"
