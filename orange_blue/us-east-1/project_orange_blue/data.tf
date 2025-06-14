@@ -1,14 +1,20 @@
+locals {
+  vpc_name             = "vpc-${terraform.workspace}"
+  subnet_name_1        = "private-us-east-1e-${terraform.workspace}"
+  subnet_name_2        = "private-us-east-1f-${terraform.workspace}"
+}
+
 data "aws_vpc" "private" {
   filter {
     name   = "tag:Name"
-    values = ["test"]
+    values = [local.vpc_name]
   }
 }
 
-data "aws_subnet" "private-us-east-1f" {
+data "aws_subnet" "private-us-east-1e" {
   filter {
     name   = "tag:Name"
-    values = ["private-us-east-1f"]
+    values = [local.subnet_name_1]
   }
 
   filter {
@@ -17,10 +23,10 @@ data "aws_subnet" "private-us-east-1f" {
   }
 }
 
-data "aws_subnet" "private-us-east-1e" {
+data "aws_subnet" "private-us-east-1f" {
   filter {
     name   = "tag:Name"
-    values = ["private-us-east-1e"]
+    values = [local.subnet_name_2]
   }
 
   filter {
@@ -43,3 +49,17 @@ data "aws_ami" "ubuntu_2404" {
     values = ["hvm"]
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
