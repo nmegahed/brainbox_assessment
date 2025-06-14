@@ -5,7 +5,7 @@ variable "aws_region" {
 }
 
 
-variable "assume_role" {
+variable "assume_role_arn" {
     type = string
     default = ""
     description = "The AWS Role for AWS account that terraform can assume"
