@@ -65,7 +65,7 @@ module "blue_instances" {
 locals {
   oranges = [
     {
-      name             = "orange-web-1"
+      name             = "${terraform.workspace}-orange-web-1"
       ami_id           = data.aws_ami.ubuntu_2404.id
       instance_type    = "t3.micro"
       subnet_id        = data.aws_subnet.private-us-east-1f.id
@@ -74,7 +74,7 @@ locals {
       sg_name          = "oranges_sg"
       root_volume_size = 20
       tags = {
-        Environment = "orange"
+        Environment = "${terraform.workspace}"
         Owner       = "orange"
       }
     }
@@ -82,7 +82,7 @@ locals {
 
   blues = [
     {
-      name             = "blue-db-1"
+      name             = "${terraform.workspace}-blue-db-1"
       ami_id           = data.aws_ami.ubuntu_2404.id
       instance_type    = "t3.small"
       subnet_id        = data.aws_subnet.private-us-east-1f.id
@@ -91,7 +91,7 @@ locals {
       sg_name          = "blues-sg"
       root_volume_size = 50
       tags = {
-        Environment = "prod"
+        Environment = "${terraform.workspace}"
         Owner       = "blue"
       }
     }
