@@ -62,34 +62,16 @@ module "blue_instances" {
 }
 
 
-locals {
- config = [
-  { 
-   filesyssize = {
-      dev = 30
-      stage = 40
-      prod = 60
-    }
-   },
-   {
-  instancesize = {
-    dev = " t3.micro"
-    stage = "t3.small"
-    prod  = t3.large"
-   }
-  }
-]
-
-
+ locals {
 
   oranges = [
     {
       name             = "${terraform.workspace}-orange-web-1"
       ami_id           = data.aws_ami.ubuntu_2404.id
-      instance_type    = "t3.micro"
+      instance_type    = t3.micro
       subnet_id        = data.aws_subnet.private-us-east-1f.id
       vpc_id           = data.aws_vpc.private.id
-      key_name         = "my-key"
+      key_name         = "${terraform.space}-key"
       sg_name          = "oranges_sg"
       root_volume_size = 20
       tags = {
