@@ -63,6 +63,25 @@ module "blue_instances" {
 
 
 locals {
+ config = [
+  { 
+   filesyssize = {
+      dev = 30
+      stage = 40
+      prod = 60
+    }
+   },
+   {
+  instancesize = {
+    dev = " t3.micro"
+    stage = "t3.small"
+    prod  = t3.large"
+   }
+  }
+]
+
+
+
   oranges = [
     {
       name             = "${terraform.workspace}-orange-web-1"
