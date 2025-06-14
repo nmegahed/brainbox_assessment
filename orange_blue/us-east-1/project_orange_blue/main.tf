@@ -83,7 +83,7 @@ locals {
   blues = [
     {
       name             = "blue-db-1"
-      ami_id           = "ami-0fedcba9876543210"
+      ami_id           = data.aws_ami.ubuntu_2404.id
       instance_type    = "t3.small"
       subnet_id        = data.aws_subnet.private-us-east-1f.id
       vpc_id           = data.aws_vpc.private.id
