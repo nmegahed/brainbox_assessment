@@ -5,7 +5,7 @@ locals {
     test = "arn:aws:iam::222222222222:role/TerraformExecutionRole"
     prod = "arn:aws:iam::333333333333:role/TerraformExecutionRole"
   }
-  role_to_assume = local.assume_role_arns[terraform.]
+  role_to_assume = local.assume_role_arns[terraform.workspace]
 }
 
 
